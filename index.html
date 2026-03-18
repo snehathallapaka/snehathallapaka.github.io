@@ -1,58 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sneha Thallapaka | ML Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      line-height: 1.6;
-      color: #222;
-    }
-    h1, h2 {
-      color: #111;
-    }
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-    .project {
-      margin-bottom: 25px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneha Thallapaka - ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #1a1a2e;
+            --text-light: #4a5568;
+            --accent: #0ea5e9;
+            --border: #e2e8f0;
+            --skill-bg: #ffffff;
+            --spacing: clamp(1rem, 4vw, 2rem);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 35%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+                linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+                linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+                linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+                linear-gradient(60deg, rgba(255, 255, 255, 0.015) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.015) 75%, rgba(255, 255, 255, 0.015)),
+                linear-gradient(60deg, rgba(255, 255, 255, 0.015) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.015) 75%, rgba(255, 255, 255, 0.015));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            }
+            100% {
+                background-position: 80px 140px, -80px -140px, 120px 210px, -40px -70px, 80px 140px, 120px 210px;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(3rem, 8vw, 6rem) var(--spacing);
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        .bio {
+            max-width: 600px;
+            margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(2rem, 4vw, 3rem);
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+            letter-spacing: -0.01em;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            color: #ffffff;
+        }
+
+        .skills-timeline {
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+        }
+
+        .timeline-block {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-block:nth-child(1) { animation-delay: 0.5s; }
+        .timeline-block:nth-child(2) { animation-delay: 0.7s; }
+        .timeline-block:nth-child(3) { animation-delay: 0.9s; }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+        .timeline-period {
+            margin-bottom: 1.25rem;
+        }
+
+        .period-label {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .period-time {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.875rem;
+            font-weight: 400;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-badge:hover {
+            background: #0f3460;
+            color: #ffffff;
+            border-color: #0f3460;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 52, 96, 0.2);
+        }
+
+        .links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 1.3s forwards;
+        }
+
+        .projects-section {
+            margin-bottom: clamp(3rem, 5vw, 4rem);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .project-card {
+            background: var(--skill-bg);
+            border: 1px solid var(--border);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.5s; }
+        .project-card:nth-child(2) { animation-delay: 0.6s; }
+        .project-card:nth-child(3) { animation-delay: 0.7s; }
+        .project-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #0f3460;
+            box-shadow: 0 4px 20px rgba(15, 52, 96, 0.12);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #0f3460, transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 400;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover .tag {
+            border-color: #0f3460;
+        }
+
+        .demo-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: #0f3460;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .demo-button:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+        .links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: border-color 0.3s ease;
+            padding-bottom: 2px;
+        }
+
+        .links a:hover {
+            border-bottom-color: #ffffff;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <!-- <header> -->
+            <h1>Sneha Thallapaka</h1>
+            <p class="subtitle">Machine Learning Engineer</p>
+        <!-- </header> -->
 
-  <h1>Sneha Thallapaka</h1>
-  <p><strong>ML Engineer</strong> — Computer Vision, NLP, Production ML</p>
+        <div class="links">
+            <a href="https://github.com/snehathallapaka">GitHub</a>
+            <a href="https://linkedin.com/in/sneha-thallapaka">LinkedIn</a>
+            <!-- <a href="/cdn-cgi/l/email-protection#2a53455f58044f474b43466a4f524b475a464f04494547">Email</a> -->
+        </div>
 
-  <p>
-    <a href="https://github.com/snehathallapaka">GitHub</a> |
-    <a href="https://linkedin.com/in/snehathallapaka">LinkedIn</a>
-  </p>
+        <p class="bio">
+            Recently completed a Master's in AI/ML, transitioning from full stack development to machine learning engineering. 
+            I bring strong software engineering fundamentals with a focus on computer vision, deep learning, and building production ML systems.
+        </p>
 
-  <h2>Projects</h2>
+        <section class="projects-section">
+            <h2 class="section-title">Recent Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Autonomous Driving System in CARLA </h3>
+                    <p class="project-description">
+                        Developed a self-driving system in the CARLA simulator with lane following, traffic sign recognition, and obstacle detection. Trained a Convolutional Neural Network for real-time steering control, trained on custom generated datasets. Enhanced detection capabilities by fine-tuning YOLOv5 for dynamic obstacles like cones and barrels.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">YOLO</span>
+                        <span class="tag">CNN</span>
+                        <span class="tag">Carla</span>
+                    </div>
+                    <a href="https://youtu.be/1jTOGBQl4Q4" target="_blank" class="demo-button">View Demo</a>
+                    <a href="https://github.com/snehathallapaka/Vision-Based-Autonomous-Driving-in-Carla" target="_blank" class="demo-button">View Code Repo</a>
+                </div>
 
-  <div class="project">
-    <h3>Autonomous Driving Perception</h3>
-    <p>Traffic sign detection and lane following in CARLA using YOLO and deep learning.</p>
-    <a href="https://github.com/yourusername/project-repo">View on GitHub</a>
-  </div>
+                <div class="project-card">
+                    <h3 class="project-title">Recommendation Engine</h3>
+                    <p class="project-description">
+                        Implemented a hybrid recommendation system combining collaborative filtering and content-based methods. 
+                        Reduced cold-start issues by 40% using transfer learning techniques.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">RecSys</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="project">
-    <h3>Speech Diarization & Alignment</h3>
-    <p>WhisperX + NeMo pipeline for multilingual transcription and speaker diarization.</p>
-    <a href="https://github.com/yourusername/project-repo">View on GitHub</a>
-  </div>
+        <section class="skills-section">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-timeline">
+                <div class="timeline-block">
+                    <div class="timeline-period">
+                        <div class="period-label"> AI/ML</div>
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="skill-badge">PyTorch</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">Deep Learning</span>
+                        <span class="skill-badge">NLP</span>
+                        <span class="skill-badge">OpenCV</span>
+                        <span class="skill-badge">YOLO</span>
+                        <span class="skill-badge">Scikit-learn</span>
+                    </div>
+                </div>
 
-  <div class="project">
-    <h3>Time-Series Forecasting System</h3>
-    <p>XGBoost, LightGBM, LSTM + ARIMA for intraday financial prediction.</p>
-    <a href="https://github.com/yourusername/project-repo">View on GitHub</a>
-  </div>
+                <div class="timeline-block">
+                    <div class="timeline-period">
+                        <div class="period-label">Full Stack/ Software Engineering</div>
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">VueJS</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">REST API</span>
+                        <span class="skill-badge">GraphQL</span>
+                    </div>
+                </div>
 
-</body>
-</html>
+                <div class="timeline-block">
+                    <div class="timeline-period">
+                        <div class="period-label">DevOps & Cloud Infrastructure</div>
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">AWS</span>
+                        <span class="skill-badge">GCP</span>
+                        <span class="skill-badge">Github Actions</span>
+                        <span class="skill-badge">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
